@@ -124,7 +124,7 @@ int main() {
 		char winner = checkWinner(grid);
 
 		if (winner != EMPTY_CELL) {
-			std::cout << std::string(1, playerTurn) + " wins!" << std::endl;
+			std::cout << "Player " + std::string(1, playerTurn) + " wins!" << std::endl;
 			break;
 		} else {
 			if (turns == 9) {
