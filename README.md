@@ -1,2 +1,2 @@
 # cpp-tic-tac-toe
-Tic tac toe in c++ 
+Tic Tac Toe game in console using C++
