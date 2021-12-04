@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 
-const char emptyCell = '#';
+const char EMPTY_CELL = '#';
 
 std::vector<std::string> stringSplit(std::string str, const std::string& delimiter) {
 	// Utility to split string using delimiter
@@ -61,7 +61,7 @@ char checkWinner(std::vector<std::vector<char>>& grid) {
 	}
 	
 	// No winner yet
-	return '#';
+	return EMPTY_CELL;
 }
 
 void makeMove(std::vector<std::vector<char>>& grid, const char& player) {
@@ -84,12 +84,12 @@ void makeMove(std::vector<std::vector<char>>& grid, const char& player) {
 				int row = std::stoi(strrow);
 
 				if (column >= 1 && column <= 3 && row >= 1 && row <= 3) {
-					if (grid[column - 1][row - 1] == '#') {
+					if (grid[column - 1][row - 1] == EMPTY_CELL) {
 						success = true;
 						grid[column - 1][row - 1] = player;
 					}
 					else {
-						std::cout << "That square is already occupied!" << std::endl;
+						std::cout << "That cell is already occupied!" << std::endl;
 					}
 				}
 				else {
@@ -109,9 +109,9 @@ int main() {
 	char playerTurn = 'X';
 	int turns = 0;
 	std::vector<std::vector<char>> grid = {
-		{'#', '#', '#'},
-		{'#', '#', '#'},
-		{'#', '#', '#'}
+		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
+		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
+		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL}
 	};
 
 	while (1) {
@@ -121,7 +121,7 @@ int main() {
 		turns++;
 		char winner = checkWinner(grid);
 
-		if (winner != '#') {
+		if (winner != EMPTY_CELL) {
 			std::cout << std::string(1, playerTurn) + " wins!" << std::endl;
 			break;
 		} else {
