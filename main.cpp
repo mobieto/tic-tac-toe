@@ -9,7 +9,7 @@ const char PLAYER2_CELL = 'O';
 std::vector<std::string> stringSplit(std::string str, const std::string& delimiter) {
 	// Utility to split string using delimiter
 	std::vector<std::string> out{};
-	int pos = 0;
+	size_t pos = 0;
 
 	while ((pos = str.find(delimiter)) != std::string::npos) {
 		out.push_back(str.substr(0, pos));
