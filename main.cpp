@@ -3,6 +3,8 @@
 #include <string>
 
 const char EMPTY_CELL = '#';
+const char PLAYER1_CELL = 'X';
+const char PLAYER2_CELL = 'O';
 
 std::vector<std::string> stringSplit(std::string str, const std::string& delimiter) {
 	// Utility to split string using delimiter
@@ -106,7 +108,7 @@ void makeMove(std::vector<std::vector<char>>& grid, const char& player) {
 }
 
 int main() {
-	char playerTurn = 'X';
+	char playerTurn = PLAYER1_CELL;
 	int turns = 0;
 	std::vector<std::vector<char>> grid = {
 		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
@@ -131,7 +133,7 @@ int main() {
 			}
  		}
 
-		playerTurn = playerTurn == 'X' ? 'O' : 'X';
+		playerTurn = playerTurn == PLAYER1_CELL ? PLAYER2_CELL : PLAYER1_CELL;
 	}
 
 	return 0;
