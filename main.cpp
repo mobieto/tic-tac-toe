@@ -30,9 +30,11 @@ void printGrid(std::vector<std::vector<char>>& grid) {
 	// Pretty print entire grid
 	int i = 0;
 
+    std::cout << "  1   2   3" << std::endl;
+
 	for (std::vector<char> item: grid) {
-		std::cout << " " + std::string(1, item[0]) + " | " + std::string(1, item[1]) + " | " + std::string(1, item[2]) << std::endl;
-		if (i != 2) std::cout << "-----------" << std::endl;
+		std::cout << std::to_string(i + 1) + " " + std::string(1, item[0]) + " | " + std::string(1, item[1]) + " | " + std::string(1, item[2]) << std::endl;
+		if (i != 2) std::cout << " -----------" << std::endl;
 		i++;
 	}
 }
@@ -115,6 +117,7 @@ int main() {
 		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
 		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL}
 	};
+	printGrid(grid);
 
 	while (1) {
 		makeMove(grid, playerTurn);
