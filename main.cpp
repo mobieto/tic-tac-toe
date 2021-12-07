@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <algorithm>
+#include <bits/stdc++.h>
 
 const char EMPTY_CELL = '#';
 const char PLAYER1_CELL = 'X';
@@ -127,7 +127,7 @@ class Computer {
                     for (int j = 0; j < 3; j++) {
                         if (grid[i][j] == EMPTY_CELL) {
                             grid[i][j] = PLAYER2_CELL;
-                            best = std::max(this.minimax(grid, depth + 1, !isMax));
+                            best = std::max(best, this->minimax(grid, depth + 1, !isMax));
                             grid[i][j] = EMPTY_CELL;
                         }
                     }
@@ -141,14 +141,22 @@ class Computer {
                     for (int j = 0; j < 3; j++) {
                         if (grid[i][j] == EMPTY_CELL) {
                             grid[i][j] = PLAYER1_CELL;
-                            best = std::max(this.minimax(grid, depth + 1, !isMax));
-                            grid[i][j] = EMPTY_CELL
+                            best = std::max(best, this->minimax(grid, depth + 1, !isMax));
+                            grid[i][j] = EMPTY_CELL;
                         }
                     }
                 }
+                
+                return best;
             }
         }
-}
+        
+        std::pair<int, int> bestMove(std::vector<std::vector<char>>& grid) {
+            int best = -1000;
+            std::pair<int, int> best_move;
+            
+        }
+};
 
 int main() {
 	char playerTurn = PLAYER1_CELL;
