@@ -1,10 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 const char EMPTY_CELL = '#';
 const char PLAYER1_CELL = 'X';
 const char PLAYER2_CELL = 'O';
+int turns;
 
 std::vector<std::string> stringSplit(std::string str, const std::string& delimiter) {
 	// Utility to split string using delimiter
@@ -109,9 +111,48 @@ void makeMove(std::vector<std::vector<char>>& grid, const char& player) {
 	}
 }
 
+class Computer {
+    public:
+        int minimax(std::vector<std::vector<char>>& grid, int depth, bool isMax) {
+            char winner = checkWinner(grid);
+            
+            if (winner == PLAYER1_CELL) return 10;
+            if (winner == PLAYER2_CELL) return -10;
+            if (turns >= 9) return 0;
+            
+            if (isMax) {
+                int best = -1000;
+                
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        if (grid[i][j] == EMPTY_CELL) {
+                            grid[i][j] = PLAYER2_CELL;
+                            best = std::max(this.minimax(grid, depth + 1, !isMax));
+                            grid[i][j] = EMPTY_CELL;
+                        }
+                    }
+                }
+                
+                return best;#
+            } else {
+                int best = 1000;
+                
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        if (grid[i][j] == EMPTY_CELL) {
+                            grid[i][j] = PLAYER1_CELL;
+                            best = std::max(this.minimax(grid, depth + 1, !isMax));
+                            grid[i][j] = EMPTY_CELL
+                        }
+                    }
+                }
+            }
+        }
+}
+
 int main() {
 	char playerTurn = PLAYER1_CELL;
-	int turns = 0;
+	turns = 0;
 	std::vector<std::vector<char>> grid = {
 		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
 		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
