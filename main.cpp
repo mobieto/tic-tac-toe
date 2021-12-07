@@ -133,7 +133,7 @@ class Computer {
                     }
                 }
                 
-                return best;#
+                return best;
             } else {
                 int best = 1000;
                 
