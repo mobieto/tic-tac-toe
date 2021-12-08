@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <algorithm>
+#include algorithm>
 
 const char EMPTY_CELL = '#';
 const char PLAYER1_CELL = 'X';
@@ -152,20 +152,44 @@ class Computer {
         }
         
         std::pair<int, int> bestMove(std::vector<std::vector<char>>& grid) {
-            int best = -1000;
-            std::pair<int, int> best_move;
+            int bestValue = -1000;
+            std::pair<int, int> best_move{-1, -1};
             
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (grid[i][j] == EMPTY_CELL) {
+                        grid[i][j] = PLAYER2_CELL;
+                        int moveValue = this->minimax(grid, 0, false);
+                        grid[i][j] = EMPTY_CELL;
+                        
+                        if (moveValue > bestValue) {
+                            best_move = {i, j};
+                            bestValue = moveValue;
+                        }
+                    }
+                }
+            }
+            
+            return best_move;
         }
 };
 
 int main() {
 	char playerTurn = PLAYER1_CELL;
+	Computer comp;
+	bool againstComputer = false;
 	turns = 0;
 	std::vector<std::vector<char>> grid = {
 		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
 		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
 		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL}
 	};
+	
+	char choice;
+	std::cout << "Would you like to play against a computer? (y/n): ";
+	std::cin >> choice;
+	againstComputer = choice == 'y';
+	
 	printGrid(grid);
 
 	while (1) {
