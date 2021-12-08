@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include algorithm>
+#include <algorithm>
 
 const char EMPTY_CELL = '#';
 const char PLAYER1_CELL = 'X';
