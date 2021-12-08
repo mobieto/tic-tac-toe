@@ -188,6 +188,7 @@ int main() {
 	char choice;
 	std::cout << "Would you like to play against a computer? (y/n): ";
 	std::cin >> choice;
+	std::cin.ignore();
 	againstComputer = choice == 'y';
 	
 	printGrid(grid);
