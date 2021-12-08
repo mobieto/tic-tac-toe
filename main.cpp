@@ -141,7 +141,7 @@ class Computer {
                     for (int j = 0; j < 3; j++) {
                         if (grid[i][j] == EMPTY_CELL) {
                             grid[i][j] = PLAYER1_CELL;
-                            best = std::max(best, this->minimax(grid, depth + 1, !isMax));
+                            best = std::min(best, this->minimax(grid, depth + 1, !isMax));
                             grid[i][j] = EMPTY_CELL;
                         }
                     }
