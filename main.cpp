@@ -176,9 +176,9 @@ class Computer {
 
 int main() {
 	char playerTurn = PLAYER1_CELL;
-	Computer comp;
 	bool againstComputer = false;
 	turns = 0;
+	Computer comp;
 	std::vector<std::vector<char>> grid = {
 		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
 		{EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
@@ -193,7 +193,12 @@ int main() {
 	printGrid(grid);
 
 	while (1) {
-		makeMove(grid, playerTurn);
+		if (!againstComputer || playerTurn == PLAYER1_CELL) makeMove(grid, playerTurn);
+		if (againstComputer && playerTurn == PLAYER2_CELL) {
+		    std::cout << "Computer's turn: " << std::endl;
+		    std::pair<int, int> bestMove = comp.bestMove(grid);
+		    grid[bestMove.first][bestMove.second] = PLAYER2_CELL;
+		}
 		printGrid(grid);
 
 		turns++;
@@ -211,6 +216,6 @@ int main() {
 
 		playerTurn = playerTurn == PLAYER1_CELL ? PLAYER2_CELL : PLAYER1_CELL;
 	}
-
+	
 	return 0;
 }
