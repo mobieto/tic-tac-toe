@@ -32,7 +32,7 @@ void printGrid(std::vector<std::vector<char>>& grid) {
 	// Pretty print entire grid
 	int i = 0;
 
-    std::cout << "  1   2   3" << std::endl;
+    	std::cout << "  1   2   3" << std::endl;
 
 	for (std::vector<char> item: grid) {
 		std::cout << std::to_string(i + 1) + " " + std::string(1, item[0]) + " | " + std::string(1, item[1]) + " | " + std::string(1, item[2]) << std::endl;
