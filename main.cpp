@@ -112,7 +112,7 @@ void makeMove(std::vector<std::vector<char>>& grid, const char& player) {
 }
 
 class Computer {
-    public:
+    private:
         int minimax(std::vector<std::vector<char>>& grid, int depth, bool isMax) {
             char winner = checkWinner(grid);
             
@@ -151,6 +151,7 @@ class Computer {
             }
         }
         
+    public:
         std::pair<int, int> bestMove(std::vector<std::vector<char>>& grid) {
             int bestValue = -1000;
             std::pair<int, int> best_move{-1, -1};
