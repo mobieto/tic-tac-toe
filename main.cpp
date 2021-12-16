@@ -36,7 +36,7 @@ void printGrid(std::vector<std::vector<char>>& grid) {
 
 	for (std::vector<char> item: grid) {
 		std::cout << std::to_string(i + 1) + " " + std::string(1, item[0]) + " | " + std::string(1, item[1]) + " | " + std::string(1, item[2]) << std::endl;
-		if (i != 2) std::cout << " -----------" << std::endl;
+		if (i != 2) std::cout << " -----------\n";
 		i++;
 	}
 }
@@ -95,18 +95,18 @@ void makeMove(std::vector<std::vector<char>>& grid, const char& player) {
 						grid[column - 1][row - 1] = player;
 					}
 					else {
-						std::cout << "That cell is already occupied!" << std::endl;
+						std::cout << "That cell is already occupied!\n";
 					}
 				}
 				else {
-					std::cout << "Both inputs must be between 1 and 3 inclusive!" << std::endl;
+					std::cout << "Both inputs must be between 1 and 3 inclusive!\n";
 				}
 			}
 			else {
-				std::cout << "Both inputs must be numbers!" << std::endl;
+				std::cout << "Both inputs must be numbers!\n";
 			}
 		} else {
-			std::cout << "Please enter 2 numbers!" << std::endl;
+			std::cout << "Please enter 2 numbers!\n";
 		}
 	}
 }
@@ -197,7 +197,7 @@ int main() {
 	while (1) {
 		if (!againstComputer || playerTurn == PLAYER1_CELL) makeMove(grid, playerTurn);
 		if (againstComputer && playerTurn == PLAYER2_CELL) {
-		    std::cout << "Computer's turn: " << std::endl;
+		    std::cout << "Computer's turn: \n";
 		    std::pair<int, int> bestMove = comp.bestMove(grid);
 		    grid[bestMove.first][bestMove.second] = PLAYER2_CELL;
 		}
@@ -207,11 +207,11 @@ int main() {
 		char winner = checkWinner(grid);
 
 		if (winner != EMPTY_CELL) {
-			std::cout << "Player " + std::string(1, playerTurn) + " wins!" << std::endl;
+			std::cout << "Player " + std::string(1, playerTurn) + " wins!\n";
 			break;
 		} else {
 			if (turns == 9) {
-				std::cout << "It's a tie!" << std::endl;
+				std::cout << "It's a tie!\n";
 				break;
 			}
  		}
