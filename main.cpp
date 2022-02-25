@@ -8,8 +8,9 @@ const char PLAYER1_CELL = 'X';
 const char PLAYER2_CELL = 'O';
 int turns;
 
+// credit: https://stackoverflow.com/questions/14265581/parse-split-a-string-in-c-using-string-delimiter-standard-c
 std::vector<std::string> stringSplit(std::string str, const std::string& delimiter) {
-	// Utility to split string using delimiter
+	// Utility to split string with a delimiter
 	std::vector<std::string> out{};
 	size_t pos = 0;
 
@@ -21,6 +22,7 @@ std::vector<std::string> stringSplit(std::string str, const std::string& delimit
 	return out;
 }
 
+// credit: https://stackoverflow.com/questions/4654636/how-to-determine-if-a-string-is-a-number-with-c
 bool isNumber(const std::string& s) {
 	// Utility to check if given string is an integer
 	std::string::const_iterator it = s.begin();
@@ -42,26 +44,26 @@ void printGrid(std::vector<std::vector<char>>& grid) {
 }
 
 char checkWinner(std::vector<std::vector<char>>& grid) {
-	// Check Rows
+	// Check rows
 	for (const std::vector<char>& item : grid) {
 		if (item[0] == item[1] && item[1] == item[2]) {
 			return item[0];
 		}
 	}
 
-	// Check Columns
+	// Check columns
 	for (int i = 0; i < 3; i++) {
 		if (grid[0][i] == grid[1][i] && grid[1][i] == grid[2][i]) {
 			return grid[0][i];
 		}
 	}
 
-	// Check Diagonal
+	// Check diagonal
 	if (grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2]) {
 		return grid[0][0];
 	}
 
-	// Reverse Diagonal
+	// Check other diagonal
 	if (grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0]) {
 		return grid[0][2];
 	}
@@ -111,6 +113,7 @@ void makeMove(std::vector<std::vector<char>>& grid, const char& player) {
 	}
 }
 
+// credit: https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-3-tic-tac-toe-ai-finding-optimal-move/
 class Computer {
     private:
         int minimax(std::vector<std::vector<char>>& grid, int depth, bool isMax) {
