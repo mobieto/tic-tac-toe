@@ -31,7 +31,7 @@ bool isNumber(const std::string& s) {
 }
 
 void printGrid(std::vector<std::vector<char>>& grid) {
-	// Pretty print entire grid
+	// print entire grid
 	int i = 0;
 
     	std::cout << "  1   2   3" << std::endl;
