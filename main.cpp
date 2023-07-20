@@ -97,18 +97,18 @@ void makeMove(std::vector<std::vector<char>>& grid, const char& player) {
 						grid[column - 1][row - 1] = player;
 					}
 					else {
-						std::cout << "That cell is already occupied!\n";
+						std::cout << "That cell is already occupied\n";
 					}
 				}
 				else {
-					std::cout << "Both inputs must be between 1 and 3 inclusive!\n";
+					std::cout << "Both inputs must be between 1 and 3\n";
 				}
 			}
 			else {
-				std::cout << "Both inputs must be numbers!\n";
+				std::cout << "Both inputs must be numbers\n";
 			}
 		} else {
-			std::cout << "Please enter 2 numbers!\n";
+			std::cout << "Please enter 2 numbers\n";
 		}
 	}
 }
