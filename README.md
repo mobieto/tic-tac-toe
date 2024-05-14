@@ -1,4 +1,2 @@
-# cpp-tic-tac-toe
-Tic tac toe
-
-
+# tic-tac-toe
+Tic tac toe in C++
